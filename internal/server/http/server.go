@@ -1,0 +1,34 @@
+package http
+
+import (
+	"context"
+	"fmt"
+	"net/http"
+	"time"
+
+	"github.com/YnMann/go-sister-design-site/internal/config"
+)
+
+type Server struct {
+	httpServer *http.Server
+}
+
+func New(cfg *config.Config, handler http.Handler) *Server {
+	return &Server{
+		httpServer: &http.Server{
+			Addr:           fmt.Sprintf(":%d", cfg.Http.Port),
+			Handler:        handler,
+			MaxHeaderBytes: 1 << 20, // 1 MB
+			ReadTimeout:    60 * time.Second,
+			WriteTimeout:   300 * time.Second,
+		},
+	}
+}
+
+func (s *Server) Run() error {
+	return s.httpServer.ListenAndServe()
+}
+
+func (s *Server) Stop(ctx context.Context) error {
+	return s.httpServer.Shutdown(ctx)
+}
