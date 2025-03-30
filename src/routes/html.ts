@@ -25,4 +25,10 @@ router.get("/project/:name", (req: Request, res: Response) => {
   res.render("project", { host, project });
 });
 
+setInterval(() => {
+  const used = process.memoryUsage();
+  console.log(`Memory Usage: RSS=${(used.rss / 1024 / 1024).toFixed(2)} MB, Heap=${(used.heapUsed / 1024 / 1024).toFixed(2)} MB`);
+}, 5000);
+
+
 export default router;
