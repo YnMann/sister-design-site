@@ -20,6 +20,9 @@ app.use(express.json());
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views')); 
 
+// Раздача статических файлов
+app.use(express.static(path.join(__dirname, 'public')));
+
 // Роуты
 app.use('/', htmlRoutes);
 

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= project.title %></title>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/project.css" />
+</head>
+<body>
+    <nav>
+        <img
+          class="logo"
+          src="/logo/Madina-Bekassyl_black_high-res (1).png"
+          alt="logo"
+        />
+        <div class="nav-menu">
+            <a href="http://<%= host %>">Обо мне</a>
+            <a href="http://<%= host %>">Проекты</a>
+            <a href="http://<%= host %>">Процесс работы</a>
+            <a href="http://<%= host %>">Услуги и цены</a>
+            <a href="http://<%= host %>">Контакты</a>
+          </div>
+    </nav>
+
+  <main>
+    <div class="container">
+      <div class="project-gallery">
+        <h2 class="project-title"><%= project.title %> <span><%= project.year %> г.</span></h2>
+        <div class="gallery-container">
+          <% project.images.forEach((image, index) => { %>
+            <div class="gallery-item" onclick="openModal(<%= index %>)">
+              <img src="<%= image %>" alt="Project Image" loading="lazy" />
+            </div>
+          <% }); %>
+        </div>
+        <p class="project-style">Стиль - <%= project.style %></p>
+        <p class="project-description"><%= project.description %></p>
+      </div>
+    </div>
+  </main>
+
+  <div class="modal" id="imageModal" onclick="closeModal(event)">
+    <button class="close" onclick="closeModal()">&times;</button>
+    <img id="modalImg" src="" alt="Zoomed Image" />
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 Madina Bekassyl. Все права защищены.</p>
+    </div>
+  </footer>
+
+  <script>
+    let currentIndex = 0;
+    const images = [<% project.images.forEach((image, index) => { %> "<%= image %>", <% }); %>];
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImg");
+    
+    function openModal(index) {
+      if (window.innerWidth > 768) {
+        currentIndex = index;
+        modalImg.src = images[currentIndex];
+        modal.style.display = "flex";
+        setTimeout(() => modal.classList.add("show"), 10);
+      }
+    }
+    
+    function closeModal(event) {
+      if (!event || event.target === modal || event.target.classList.contains("close")) {
+        modal.classList.remove("show");
+        setTimeout(() => {
+          modal.style.display = "none";
+          modalImg.src = "";
+        }, 300);
+      }
+    }
+  </script>
+</body>
+</html>

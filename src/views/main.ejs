@@ -1,11 +1,375 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= title %></title>
-</head>
-<body>
-  <h1><%= message %></h1>
-</body>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Madina Bekassyl - Интерьерный дизайнер</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <nav>
+      <img
+        class="logo"
+        src="/logo/Madina-Bekassyl_black_high-res (1).png"
+        alt="logo"
+      />
+      <div class="nav-menu">
+          <a href="http://<%= host %>">Обо мне</a>
+          <a href="http://<%= host %>">Проекты</a>
+          <a href="http://<%= host %>">Процесс работы</a>
+          <a href="http://<%= host %>">Услуги и цены</a>
+          <a href="http://<%= host %>">Контакты</a>
+        </div>
+  </nav>
+    <main>
+      <div class="container">
+        <div class="content">
+          <div class="text">
+            <h1>HELLO!</h1>
+            <h2>ДАВАЙТЕ ЗНАКОМИТЬСЯ</h2>
+            <p>
+              Я - Мадина, интерьерный дизайнер с 2014 года. Выпускница Казахской
+              Государственной Архитектурно-Строительной Академии (КазГАСА).
+              Стажировалась в Сербии, в городе Белград, где приобрела ценный
+              международный опыт и научилась уникальным подходам в дизайне.
+            </p>
+            <p>
+              За годы работы мной было разработано более 50 000 квадратных
+              метров жилых и коммерческих пространств, каждое из которых
+              отражает индивидуальность клиентов и высокие стандарты качества.
+            </p>
+            <p>
+              Я стремлюсь создавать не просто красивые интерьеры, а
+              функциональные пространства, в которых каждая деталь продумана до
+              мелочей.
+            </p>
+          </div>
+          <div class="image">
+            <img src="mbekassyl_photos/photo_1.JPG" alt="Madina Bekassyl" />
+          </div>
+        </div>
+      </div>
+    
+      <div class="container">
+        <h1 class="container-name">Мои проекты</h1>
+      
+        <div class="projects-container">
+          <% projects.forEach(project => { %>
+            <button
+                class="project-card"
+                onclick="window.location.href = 'http://<%= host %>/project/<%= project.name %>'"
+                style="background-image: url('<%= project.images[Math.floor(Math.random() * project.images.length)] %>')"
+              >
+              <div class="overlay">
+                <h2><%= project.title %></h2>
+                <p><%= project.description %></p>
+              </div>
+            </button>
+          <% }); %>
+        </div>
+      </div>
+      
+      <div class="container">
+        <div class="services-content">
+          <img class="services-logo" src="/logo/Madina-Bekassyl_black_high-res (1).png" alt="Madina Bekassyl Logo" />
+          <h2 class="services-title">МОИ УСЛУГИ</h2>
+          <ul class="services-list">
+            <li>
+              <span class="service-number">01</span>
+              <span class="service-description">ПОЛНЫЙ ДИЗАЙН ПРОЕКТ ЖИЛЫХ И КОММЕРЧЕСКИХ ПОМЕЩЕНИЙ</span>
+              <span class="service-price">12 000 ₸/КВ.М.</span>
+            </li>
+            <li>
+              <span class="service-number">02</span>
+              <span class="service-description">ЭКСКЛЮЗИВНЫЙ ДИЗАЙН ПРОЕКТ</span>
+              <span class="service-price">9 000 ₸/КВ.М.</span>
+            </li>
+            <li>
+              <span class="service-number">03</span>
+              <span class="service-description">ПЛАНИРОВОЧНОЕ РЕШЕНИЕ</span>
+              <span class="service-price">2 000 ₸/КВ.М.</span>
+            </li>
+            <li>
+              <span class="service-number">04</span>
+              <span class="service-description">КОМПЛЕКТАЦИЯ ПРОЕКТА И АВТОРСКОЕ СОПРОВОЖДЕНИЕ</span>
+              <span class="service-price">150 000 ₸/МЕСЯЦ</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    
+      <!-- New "Процесс работы" Section -->
+      <div class="container">
+        <div class="process-content">
+          <h2 class="process-title">ПОЛНЫЙ ДИЗАЙН ПРОЕКТ</h2>
+          <p class="process-subtitle">МАКСИМАЛЬНО НАГЛЯДНЫЙ ПО СОСТАВУ ПРОЕКТ. В НЕГО ВХОДЯТ:</p>
+          <div class="process-list">
+            <div class="process-column">
+              <div class="process-item">
+                <span class="process-number">01</span>
+                <div class="process-text">
+                  <h3>ПЛАНИРОВОЧНОЕ РЕШЕНИЕ</h3>
+                  <p>Разработка планировочных вариантов на основе замеров помещения. 2-3 варианта для выбора одной из них и проработка деталей или микса предложенных вариантов.</p>
+                </div>
+              </div>
+              <div class="process-item">
+                <span class="process-number">02</span>
+                <div class="process-text">
+                  <h3>КОЛЛАЖИ</h3>
+                  <p>Разработка дизайна в виде коллажах на основе европейского выбора и ванных помещений. Коллажи правятся до идеала.</p>
+                </div>
+              </div>
+              <div class="process-item">
+                <span class="process-number">03</span>
+                <div class="process-text">
+                  <h3>3D ВИЗУАЛИЗАЦИЯ</h3>
+                  <p>Реалистичные визуализации по утвержденным коллажам. 4-8 ракурсов на каждую комнату. Не более 2 этапов правок для одного списка до финала.</p>
+                </div>
+              </div>
+            </div>
+            <div class="process-column">
+              <div class="process-item">
+                <span class="process-number">04</span>
+                <div class="process-text">
+                  <h3>РАБОЧИЕ ЧЕРТЕЖИ ДЛЯ СТРОИТЕЛЬНОЙ БРИГАДЫ</h3>
+                </div>
+              </div>
+              <div class="process-item">
+                <span class="process-number">05</span>
+                <div class="process-text">
+                  <h3>ВЕДОМОСТЬ К ПРОЕКТУ</h3>
+                  <p>Указаны: наименование, количество по артикулу всей декоративной части проекта (отделка, мебель, свет)</p>
+                </div>
+              </div>
+              <div class="process-item">
+                <span class="process-number">06</span>
+                <div class="process-text">
+                  <h3>ТЕХНИЧЕСКОЕ ЗАДАНИЕ ПО ИНДИВИДУАЛЬНОЙ МЕБЕЛИ</h3>
+                  <p>Подробные чертежи по всей мебели индивидуального изготовления.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- New "Эскизный дизайн проект Section -->
+      <div class="container">
+        <div class="sketch-content">
+          <h2 class="sketch-title">Эскизный дизайн проект</h2>
+          <p class="sketch-subtitle">В ЕГО СОСТАВ ВХОДЯТ:</p>
+          <div class="sketch-list">
+            <div class="sketch-column">
+              <div class="sketch-item">
+                <span class="sketch-number">01</span>
+                <div class="sketch-text">
+                  <h3>ПЛАНИРОВОЧНОЕ РЕШЕНИЕ</h3>
+                  <p>На основе замеров. 2-3 варианта. Далее выбор одной из них и проработка деталей или микса предложенных вариантов.</p>
+                </div>
+              </div>
+              <div class="sketch-item">
+                <span class="sketch-number">02</span>
+                <div class="sketch-text">
+                  <h3>КОЛЛАЖИ</h3>
+                  <p>Дизайн в виде коллажей на основе европейского выбора и ванных помещений. Коллажи правятся до идеала.</p>
+                  <p>Мебель, свет, сантехника и отделка подбираются реалистичные в рамках европейского бюджета, а после учитываются.</p>
+                </div>
+              </div>
+            </div>
+            <div class="sketch-column">
+              <div class="sketch-item">
+                <span class="sketch-number">03</span>
+                <div class="sketch-text">
+                  <h3>РАБОЧИЕ ЧЕРТЕЖИ ДЛЯ СТРОИТЕЛЬНОЙ БРИГАДЫ</h3>
+                </div>
+              </div>
+              <div class="sketch-item">
+                <span class="sketch-number">04</span>
+                <div class="sketch-text">
+                  <h3>ВЕДОМОСТЬ К ПРОЕКТУ</h3>
+                  <p>Указаны: наименование, количество по артикулу всей декоративной части проекта (отделка, мебель, свет, отделка)</p>
+                </div>
+              </div>
+              <div class="sketch-item">
+                <span class="sketch-number">05</span>
+                <div class="sketch-text">
+                  <h3>ТЕХНИЧЕСКОЕ ЗАДАНИЕ ПО ИНДИВИДУАЛЬНОЙ МЕБЕЛИ</h3>
+                  <p>Подробные чертежи по всей мебели индивидуального изготовления.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="sketch-footer">
+            <p>Данный пакет подходит для проектов до 150 кв.м. и с небольшим бюджетом. Если предусматривается сложных технических решений, то лучше выбрать 3д визуализацию.</p>
+            <p>Дополнительно: Функциональность многих материалов и согласовываются вкусу заказчика в процессе ремонта на основе коллажах.</p>
+            <p>Пусть система расчета: часть помещения можно рассчитать по пакету эскизного дизайна проекта. Микс 3д визуализации и коллажах.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- New "Состав рабочих чертежей проект Section -->
+      <div class="container">
+        <div class="drawings-content">
+          <h2 class="drawings-title">Состав рабочих чертежей</h2>
+          <p class="drawings-subtitle">ВХОДЯТ:</p>
+          <div class="drawings-layout">
+            <div class="drawings-text">
+              <ul class="drawings-list">
+                <li>Обмерный план;</li>
+                <li>План демонтажа перегородок;</li>
+                <li>План монтажа перегородок;</li>
+                <li>План расстановки мебели с указанием габаритных размеров;</li>
+                <li>План наливных покрытий;</li>
+                <li>План теплого пола;</li>
+                <li>План расстановки мебели и осветительных приборов;</li>
+                <li>План потолков с привязками осветительных приборов;</li>
+                <li>План расположения группы выключателей;</li>
+                <li>План расположения розеток;</li>
+                <li>План потолка комнаты;</li>
+                <li>Развертки по санузлам с раскладкой плитки, выведенной вами плитки;</li>
+                <li>Ведомость отделки.</li>
+              </ul>
+            </div>
+            <div class="drawings-image">
+              <img src="projects/office/01-Hall 1 .png" alt="Floor Plan" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- New "Авторское сопровождение и комплектация" Section -->
+      <div class="container">
+        <div class="supervision-content">
+          <h2 class="supervision-title">Авторское сопровождение и комплектация</h2>
+          <p class="supervision-subtitle">ЧТО ВХОДИТ В ЭТУ УСЛУГУ:</p>
+          <div class="supervision-list">
+            <div class="supervision-column">
+              <div class="supervision-item">
+                <span class="supervision-number">01</span>
+                <div class="supervision-text">
+                  <h3>КОНТРОЛЬ СООТВЕТСТВИЯ ВЫПОЛНЕННЫХ РЕМОНТНЫХ РАБОТ ПРОЕКТУ</h3>
+                </div>
+              </div>
+              <div class="supervision-item">
+                <span class="supervision-number">02</span>
+                <div class="supervision-text">
+                  <h3>ВЫЕЗДЫ В САЛОНЫ ДЛЯ СОГЛАСОВЫНИЯ МАТЕРИАЛОВ, ОТДЕЛКИ И МЕБЕЛИ</h3>
+                </div>
+              </div>
+              <div class="supervision-item">
+                <span class="supervision-number">03</span>
+                <div class="supervision-text">
+                  <h3>ОТВЕТЫ НА ВСЕ ВОПРОСЫ,ВОЗНИКАЮЩИЕ В ПРОЦЕССЕ С ДРУГАЯМ, ПРАВКИ ПО ВЫПОЛНИМОСТИ В ЧЕРТЕЖАХ И ПО МЕСТУ</h3>
+                </div>
+              </div>
+              <div class="supervision-item">
+                <span class="supervision-number">04</span>
+                <div class="supervision-text">
+                  <h3>СОВМЕСТНАЯ РАБОТА СМЕЖНЫМИ СОГЛАСОВАНИЕ КОМПЛЕКТУЮЩИХ И ПРОЧЕЕ.</h3>
+                </div>
+              </div>
+              <div class="supervision-item">
+                <span class="supervision-number">05</span>
+                <div class="supervision-text">
+                  <h3>СОГЛАСОВАНИЕ С ЗАКАЗЧИКОМ ВЫКРАСОК,ОБРАЗЦОВ ПЛИТКИ,ТКАНЕЙ,МАТЕРИАЛОВ И ПР.</h3>
+                </div>
+              </div>
+            </div>
+            <div class="supervision-column">
+              <div class="supervision-item">
+                <span class="supervision-number">06</span>
+                <div class="supervision-text">
+                  <h3>ВЫЕЗДЫ НА ЗАМЕРЫ И МОНТАЖ ПОДРЯДЧИКОВ.</h3>
+                </div>
+              </div>
+              <div class="supervision-item">
+                <span class="supervision-number">07</span>
+                <div class="supervision-text">
+                  <h3>ВЫЕЗДЫ НА ПРИЕМКУ «ЧУБЫХ ЭТАПОВ СТРОЙКИ</h3>
+                </div>
+              </div>
+              <div class="supervision-item">
+                <span class="supervision-number">08</span>
+                <div class="supervision-text">
+                  <h3>ПОСТОЯННАЯ СВЯЗЬ С ПРОРАБОМ, КОНТРОЛЬ СВОЕВРЕМЕННОЙ ПОСТАВКИ МАТЕРИАЛОВ НА ОБЪЕКТ</h3>
+                </div>
+              </div>
+              <div class="supervision-item">
+                <span class="supervision-number">09</span>
+                <div class="supervision-text">
+                  <h3>ПРОЧЕТ ИСТОЧНИК МАТЕРИАЛОВ,МУЗЫКЕ С МЕБЕЛЬЩИКАМИ ПО НАЛИЧИЮ МАТЕРИАЛОВ МЕБЕЛИ ДЛЯ СКОРОЙ ДОСТАВКИ; ЗАМЕНЫ ПОВРЕЖДЕННЫХ ПО НЕОБХОДИМОСТИ, РЕКЛАМАЦИЙ И ПР.</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <!-- New "Планировочное решение" Section -->
+      <div class="container">
+        <div class="layout-content">
+          <h2 class="layout-title">Планировочное решение</h2>
+          <p class="layout-subtitle">
+            Один из важнейших этапов в создании дизайн-проекта основа для квартиры вя реальном самостоятельного.можно заказать эту услугу<br>
+            Компактная планировка - залог успешного ремонта. Даже если дизайн квартиры вы реализуете самостоятельно,можно заказать эту услугу<br>
+            Иметь грамотную планировку,на нее можно наложить любой дизайн
+          </p>
+          <div class="layout-list">
+            <div class="layout-column">
+              <div class="layout-item">
+                <span class="layout-number">01</span>
+                <div class="layout-text">
+                  <h3>ЗАМЕР ПОМЕЩЕНИЯ И ОБМЕРНЫЙ ПЛАН</h3>
+                </div>
+              </div>
+              <div class="layout-item">
+                <span class="layout-number">02</span>
+                <div class="layout-text">
+                  <h3>РАЗРАБОТКА ПЛАНИРОВОЧНЫХ РЕШЕНИЙ</h3>
+                  <p>На основе замеров. 2-3 варианта.Далее выбор одной из них и проработка деталей или микса предложенных вариантов</p>
+                </div>
+              </div>
+              <div class="layout-item">
+                <span class="layout-number">03</span>
+                <div class="layout-text">
+                  <h3>ПЛАН С РАССТАНОВКОЙ МЕБЕЛИ И САНТЕХНИКИ С РАЗМЕРАМИ</h3>
+                </div>
+              </div>
+            </div>
+            <div class="layout-column">
+              <div class="layout-item">
+                <span class="layout-number">06</span>
+                <div class="layout-text">
+                  <h3>ПЛАН МОНТАЖА И ДЕМОНТАЖА СТЕН</h3>
+                </div>
+              </div>
+              <div class="layout-item">
+                <span class="layout-number">07</span>
+                <div class="layout-text">
+                  <h3>ДОПОЛНИТЕЛЬНО ОСУЩЕСТВЛЯЕТСЯ ПРИ НЕОБХОДИМОСТИ ЭЛЕКТРИКИ: 1.ТИПАЯ ОСВЕЩЕНИЕ 2.ПЛАН РОЗЕТОК 3.ПЛАН УПРАВЛЕНИЯ СВЕТОМ</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+      <div class="container">
+        <div class="content">
+          <div class="text">
+            <h1>Контакты</h1>
+            <p>Email Address madinabks.interiordesign@gmail.com</p>
+            <p>instagram madinabks.interior</p>
+            <p>Phone Number +7 (707) 206 70 72</p>
+          </div>
+    
+          <div class="image">
+            <img src="mbekassyl_photos/photo_2.JPG" alt="Madina Bekassyl" />
+          </div>
+        </div>
+      </div>
+    </main>
+    </footer>
+  </body>
 </html>
