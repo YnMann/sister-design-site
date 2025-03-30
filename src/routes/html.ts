@@ -1,13 +1,11 @@
-import{ Router, Request, Response } from "express";
-
+import { Router, Request, Response } from "express";
 import { projects } from "../domain/index";
 
 const router = Router();
 
 const PORT = process.env.PORT || 4000;
-const local = `localhost:${PORT}`
-
-const host = local
+const isProd = process.env.NODE_ENV === "production";
+const host = isProd ? process.env.HOST : `localhost:${PORT}`;
 
 // Роут для отдачи главной страницы (main.ejs)
 router.get("/", (req: Request, res: Response) => {
@@ -20,8 +18,8 @@ router.get("/project/:name", (req: Request, res: Response) => {
   const project = projects.find((p) => p.name === projectName);
 
   if (!project) {
-    res.render("404", { host});
-    return 
+    res.render("404", { host });
+    return;
   }
 
   res.render("project", { host, project });
